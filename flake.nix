@@ -35,7 +35,20 @@
 
         devShells.default = pkgs.mkShell {
           inputsFrom = [ self'.packages.default ];
-          buildInputs = with pkgs; [ ];
+          buildInputs = with pkgs; (
+            let
+              jre = jdk21;
+            in
+            [
+              # Scala stuff
+              (scala-cli.override { inherit jre; })
+              metals
+              # Scala Native stuff
+              llvm
+              clang
+              boehmgc
+            ]
+          );
         };
       };
       flake = {
