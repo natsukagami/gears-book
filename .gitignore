@@ -1,0 +1,6 @@
+# mdbook stuff
+book
+# Nix stuff
+.envrc
+.direnv
+result
