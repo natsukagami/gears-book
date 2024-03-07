@@ -4,3 +4,7 @@ book
 .envrc
 .direnv
 result
+.bsp
+.metals
+.scala-build
+
