@@ -47,6 +47,8 @@
               llvm
               clang
               boehmgc
+              # Markdown stuff
+              marksman
             ]
           );
         };
