@@ -33,6 +33,10 @@
 - [Staying referentially transparent with Async Blocks](./idiomatic/async_blocks.md)
 - [Taking async lambdas as arguments](./idiomatic/async_args.md)
 
+# Using Gears in your projects
+
+- [Incremental adoption in your codebase](./usage/adopting-gears.md)
+
 # Lower-level details
 
 - [Async Support: Suspensions and Schedulers](./low-level/support.md)
