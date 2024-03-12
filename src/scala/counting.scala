@@ -11,7 +11,7 @@ def countTo(n: Int)(using Async): Unit =
     AsyncOperations.sleep(100 /* milliseconds */ ) /*(using Async)*/
     println(s"counted $i")
 
-@main def Main() =
+@main def Counting() =
   Async.blocking: /* (async: Async) ?=> */
     countTo(10)
     println("Finished counting!")
