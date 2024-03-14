@@ -1,23 +1,27 @@
 # Concurrency with Future
 
-`Future` is the primary source of concurrency in a Gears program.
+[`Future`](https://lampepfl.github.io/gears/api/gears/async/Future.html)
+is the primary source of concurrency in a Gears program.
 There are actually two kinds of futures: passive and active. However,
 we shall look at active futures for now, and come back with passive futures
 in [the next chapter](../unstructured/sources.md).
 
 ## Spawning a concurrent computation with `Future.apply`
 
-[`Future.apply`] takes a `body` of the type `Async.Spawn ?=> T` (that is, an async computation)
+[`Future.apply`](https://lampepfl.github.io/gears/api/gears/async/Future$.html#apply-fffffebf)
+takes a `body` of the type `Async.Spawn ?=> T` (that is, an async computation)
 and runs it *completely concurrently* to the current computation.
 `Future.apply` returns immediately with a value of type `Future[T]`.
 Eliding details (that we shall come back next chapter), there are two things you can do with this `Future[T]`:
-- **Await**: calling `.await` on the `Future[T]` _suspends_ the current Async context until the `Future`'s body
+- **Await**: calling [`.await`](https://lampepfl.github.io/gears/api/gears/async/Async$.html#await-5df)
+  on the `Future[T]` _suspends_ the current Async context until the `Future`'s body
   returns, and give you back the returned value `T`.
   If `body` throws an exception, `.await` will also throw as well. `.awaitResult` is the alternative where both
   cases are wrapped inside a `Try`.
 
   Being a _suspension point_, `.await` requires an Async context.
-- **Cancel**: calling `.cancel()` on the `Future[T]` *sends* a cancellation signal to the `Future`.
+- **Cancel**: calling [`.cancel()`](https://lampepfl.github.io/gears/api/gears/async/Future.html#cancel-94c)
+  on the `Future[T]` *sends* a cancellation signal to the `Future`.
   This would cause `body`'s execution to receive `CancellationException` on the next suspension point,
   and cancel all of the `body`'s spawned Futures and so on, in a cascading fashion.
 
@@ -47,8 +51,9 @@ Let's walk through what's happening here:
 
 ## `Async.Spawn`
 
-If you noticed, `Async.blocking` gives you an `Async.Spawn` context (rather than just `Async`), which `Future.apply`
-requires. What is it?
+If you noticed, `Async.blocking` gives you an [`Async.Spawn`](https://lampepfl.github.io/gears/api/gears/async/Async$.html#Spawn-0) context
+(rather than just `Async`), which `Future.apply`
+[requires](https://lampepfl.github.io/gears/api/gears/async/Future$.html#apply-fffffebf). What is it?
 
 Recall that `Async`, as a capability, gives you the ability to _suspend_ the computation to wait for other values.
 `Async.Spawn` adds a new capability on top: it allows you to _spawn_ concurrent computations as well.
