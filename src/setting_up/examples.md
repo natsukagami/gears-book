@@ -21,7 +21,7 @@ This means that we need to manually compile and locally publish it.
 
 To do so, clone `gears` from the GitHub repository:
 ```bash
-git clone https://github.com/lampepfl/gears
+git clone https://github.com/lampepfl/gears --recursive
 ```
 
 And run `rootJVM/publishLocal`.
@@ -34,7 +34,7 @@ You would also need to locally publish a custom version of `munit` for Scala Nat
 
 To locally publish `munit`, from the root directory of `gears` repository:
 ```bash
-git module update            # Create and update submodules
+git submodule update            # Create and update submodules
 dependencies/publish_deps.sh # Locally publish pinned dependencies
 ```
 
