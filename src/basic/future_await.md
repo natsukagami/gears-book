@@ -95,6 +95,9 @@ is a variant where all other futures are cancelled when one succeeds.
 works similar to `awaitFirst`, but allows you to attach a body to handle the returned value, so the futures
 being raced does not have to be of the same type (as long as the handler returns the same type).
 
+Compared to creating more futures, `Async.select` also *guarantees* that **exactly one** of the handlers
+is run, so you can be more confident putting side-effects into the handlers.
+
 ```scala
 Async.blocking:
   val a = Future(1)
@@ -110,7 +113,7 @@ Async.blocking:
   println(v) // either "number 1 was returned", or "string `one` was returned"
 ```
 
-`Async.select` takes `SelectCase*` varargs, so you can also `.map` a sequence of `Future` as well. No need to create more futures!
+`Async.select` takes `SelectCase*` varargs, so you can also `.map` a sequence of `Future` as well.
 ```scala
 Async.blocking:
   val futs = (1 to 10).map(Future.apply)
