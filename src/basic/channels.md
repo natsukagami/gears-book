@@ -50,6 +50,14 @@ Gears provide 3 types of channels:
 
   When `cancel`led, items in the buffer are dropped.
 
+### Restricted channel interfaces
+
+When writing functions taking in channels, it is often useful to restrict them to be read-only or send-only.
+Gears `Channel` trait is composed of
+[`ReadableChannel`](https://lampepfl.github.io/gears/api/gears/async/ReadableChannel.html),
+[`SendableChannel`](https://lampepfl.github.io/gears/api/gears/async/SendableChannel.html) and
+`Closeable`, so any channel can be upcasted to one of the above three interfaces.
+
 ## `Async.select` with channels
 
 `Async.select` can be used with channels. To do so, use
@@ -95,3 +103,29 @@ for i <- 1 to 2 do
 ```
 
 It is possible to mix reads and sends within one `Async.select`, or mix channel operations with futures!
+
+## Channel in Use: Actor pattern
+
+One of the common patterns of using channels is to write functions that continuously take inputs from
+one channel, process them, and send their output into another channel.
+This is sometimes referred to as an Actor, or a Communicating Sequential Process.
+
+Let's look at one of the examples,
+inspired by [Rob Pike's talk on concurrency patterns in Go](https://go.dev/talks/2012/concurrency.slide#53).
+This is an implementation of a concurrent [prime sieve](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes).
+
+```scala
+{{#include ../scala/prime_sieve.scala}}
+```
+
+Some notable points:
+- `generate` and `sieve` are both `using Async` functions, they block the caller until their work has finished.
+  We want to run them concurrently as actors, we spawn them with `Future.apply`.
+- Both are given channels to write into, and the permission to close them. This is a common pattern, useful
+  when your channels are *single sender, multiple readers*[^multiplexer].
+  In such case, it is common for the sender to signal that there are no more inputs by simply closing the channel.
+  All readers are then immediately notified, and in this case (where readers are senders themselves in a pipeline),
+  they can forward this signal by closing their respective channels.
+
+[^multiplexer]: in the case where multiple senders are involved, the logic is much more complicated. You might want
+to look into [`ChannelMultiplexer`](https://lampepfl.github.io/gears/api/gears/async/ChannelMultiplexer.html).
