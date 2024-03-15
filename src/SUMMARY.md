@@ -15,7 +15,7 @@
 - [Concurrency with Future](./basic/futures.md)
 - [Groups, Scoping and Structured Concurrency](./basic/structured_concurrency.md)
 - [Working with multiple Futures](./basic/future_await.md)
-- [Orchestrating with Retry](./basic/retry.md)
+- [Supervising with Retries and Timeouts](./basic/retry.md)
 - [Inter-future communication with Channels](./basic/channels.md)
 
 # Dealing with Unstructured Concurrency
