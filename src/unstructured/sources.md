@@ -145,9 +145,9 @@ The answer depends a lot on _what_ the source is representing:
   Another example of an ephemeral source is
   [`.readSource`](https://lampepfl.github.io/gears/api/gears/async/ReadableChannel.html#readSource-0) of a channel.
 
-## Active and Passive/Reactive Sources
+## Active and Reactive Sources
 
-Activeness and Passitivity of Sources refer to whether values are resolved to the Source regardless of
+Activeness and Reactivity of Sources refer to whether values are resolved to the Source regardless of
 interactions with it (regarding adding/removing listeners).
 
 Some sources, like an active `Future` or an asynchronous request like `File.readString`, will complete and
