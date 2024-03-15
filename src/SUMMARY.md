@@ -20,7 +20,8 @@
 
 # Dealing with Unstructured Concurrency
 
-- [Sources, Futures and Promises](./unstructured/sources.md)
+- [Sources as a Concurrency Primitive](./unstructured/sources.md)
+- [Passive Futures and Promises](./unstructured/promises.md)
 - [Select and Race](./unstructured/select_race.md)
 - [Locking and Failible Listeners](./unstructured/listeners.md)
 - [Cancellables and Scoping rules](./unstructured/cancellation.md)
