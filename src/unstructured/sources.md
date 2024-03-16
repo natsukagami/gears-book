@@ -87,7 +87,7 @@ trait Source[+T]:
 
 // Included for convenience, simplified...
 trait Listener[-T]:
-  def apply(item: T, origin: Source[T]): Unit
+  def complete(item: T, origin: Source[T]): Unit
 ```
 
 - [`onComplete`](https://lampepfl.github.io/gears/api/gears/async/Async$$Source.html#onComplete-fbc)
