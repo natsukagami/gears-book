@@ -1,7 +1,7 @@
 # Locking and Failible Listeners
 
-As mentioned in the previous section, `dropListener` is not a perfect solution when it comes
-to managing listeners:
+As mentioned in the previous section, [`Source.dropListener`](https://lampepfl.github.io/gears/api/gears/async/Async$$Source.html#)
+is not a perfect solution when it comes to managing listeners:
 `dropListener` is run possibly at a *different* thread than the one processing the `Source` items,
 which means there is no guarantee that calling `dropListener` *before* the listener is resolved
 will cause the listener to _not_ be resolved.
