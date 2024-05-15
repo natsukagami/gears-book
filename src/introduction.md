@@ -8,5 +8,3 @@ while allowing library implementations to deal with external asynchronous IO wit
 While Gears is currently in experimental stage (definitely not recommended for production!), we provide basic support for
 - Virtual-threads-enabled JVM environments (JRE 21 or later, or JRE 19 with experimental virtual threads enabled)
 - [Scala Native](https://scala-native.org) 0.5.0 or later with *delimited continuations* support (on Linux, MacOS and BSDs).
-
-**Note**: This book is currently tracking **Gears 0.2.0 snapshot**, which has some difference in design from the previous 0.1 released version.
