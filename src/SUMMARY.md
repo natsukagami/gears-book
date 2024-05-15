@@ -6,8 +6,8 @@
 
 # Starting up
 
-- [Setting up Gears](./setting_up/examples.md)
 - [Adding Gears in your own Scala Project](./setting_up/packages.md)
+- [Setting up Gears](./setting_up/examples.md)
 
 # Basic Concepts
 

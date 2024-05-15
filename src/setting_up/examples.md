@@ -16,10 +16,7 @@ provided the following dependencies:
 
 ## Compiling `gears`
 
-Gears binaries are not currently published, as they depend on unreleased versions of Scala Native.
-This means that we need to manually compile and locally publish it.
-
-To do so, clone `gears` from the GitHub repository:
+To compile `gears` from source, clone `gears` from the GitHub repository:
 ```bash
 git clone https://github.com/lampepfl/gears --recursive
 ```
@@ -59,8 +56,8 @@ scala-cli run src/scala/hello.scala
 
 ### On Scala Native
 
-The current Scala Native version required by Gears is 0.5.0, which is unreleased.
-Therefore examples in this book hardcodes `0.5.0-RC1` as the Scala Native version, which
+The current Scala Native version required by Gears is 0.5.1.
+Therefore examples in this book hardcodes `0.5.1` as the Scala Native version, which
 is also the version `gears` is currently compiled against.
 
 Examples can be run with
