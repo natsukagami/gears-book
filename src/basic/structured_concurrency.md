@@ -114,7 +114,7 @@ interrupt it without data loss!)
 throw with a `CancellationException`.
 The `body` may catch and react to this exception, e.g. to clean up resources.
 
-The `Future` context will only attempt to unlink _after_ body has returned, whether normally nor by unwinding an exception.
+The `Future` context will only attempt to unlink _after_ body has returned, whether normally or by unwinding an exception.
 
 ![Context when Scope cancels and its body awaits](../images/scope_future_cancel_exc.png)
 
