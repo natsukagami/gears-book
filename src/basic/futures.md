@@ -61,7 +61,7 @@ Recall that `Async`, as a capability, gives you the ability to _suspend_ the com
 Getting a `Spawn` capability is actually very simple. You get an `Async.Spawn` capability on `Async.blocking` by default,
 and both `Future.apply` and `Async.group` gives you an `Async.Spawn` capability sub-scoped from a parent `Async` scope.
 Note that, however, most functions do _not_ take an `Async.Spawn` context by default.
-This is due to the nature of `Spawn`'s capability to spawn computations that _runs as long as the `Spawn` scope is alive_.
+This is due to the nature of `Spawn`'s capability to spawn computations that _runs as long as the `Spawn` scope is alive_, which typically corresponds to the lexical scope of the function.
 If functions take `Async.Spawn`, they are allowed to spawn futures that are still computing even _after_ the function itself returns!
 ```scala
 def fn()(using Async.Spawn) =
