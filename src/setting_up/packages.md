@@ -5,7 +5,7 @@ by your preferred build tool:
 
 - **With `sbt`**:
   ```scala
-  libraryDependencies += "ch.epfl.lamp" %%% "gears" % "0.2.0",
+  libraryDependencies += "ch.epfl.lamp" %% "gears" % "0.2.0",
   ```
 - **With `mill`**:
   ```scala
